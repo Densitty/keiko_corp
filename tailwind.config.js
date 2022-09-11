@@ -8,6 +8,16 @@ module.exports = {
       fontFamily: {
         sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        "gray-1": "#dadce0",
+        "blue-1": "#1967d2",
+        "green-1": "#137333",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      margin: ["first"],
     },
   },
   plugins: [],
