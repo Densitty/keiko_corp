@@ -2,7 +2,7 @@
   <header class="w-full text-sm">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div
-        class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-gray-1 justify-between"
+        class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-gray-1"
       >
         <div class="w-40 h-full">
           <a
@@ -17,7 +17,7 @@
           </a>
         </div>
 
-        <nav class="h-full">
+        <nav class="h-full ml-auto">
           <ul class="flex h-full list-none p-0 m-0">
             <li
               v-for="link in links"
@@ -31,14 +31,30 @@
             </li>
           </ul>
         </nav>
+
+        <div class="flex items-center h-full ml-auto">
+          <action-button
+            v-if="!isLoggedIn"
+            data-test="action-button"
+            @click="loginUser"
+          />
+          <profile-image v-else data-test="profile-image" @click="logoutUser" />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import ActionButton from "@/components/global/button/Button.vue";
+import ProfileImage from "@/components/global/profile/ProfileImage.vue";
+
 export default {
   name: "MainNav",
+  components: {
+    ActionButton,
+    ProfileImage,
+  },
   data() {
     return {
       company: {
@@ -54,7 +70,16 @@ export default {
         { id: 5, name: "Internships" },
         { id: 6, name: "Jobs" },
       ],
+      isLoggedIn: false,
     };
+  },
+  methods: {
+    loginUser() {
+      this.isLoggedIn = true;
+    },
+    logoutUser() {
+      this.isLoggedIn = false;
+    },
   },
 };
 </script>

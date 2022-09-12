@@ -34,4 +34,31 @@ describe("MainNav", () => {
       "Jobs",
     ]);
   });
+
+  describe("when a user is not authenticated", () => {
+    it("shows a sign-in button", () => {
+      const wrapper = mount(MainNav);
+
+      const loginBtn = wrapper.find("[data-test='action-button'");
+
+      expect(loginBtn.exists()).toBe(true);
+    });
+  });
+
+  describe("when a user is authenticated", () => {
+    it("shows a profile image", async () => {
+      const wrapper = mount(MainNav);
+      let profileImage = wrapper.find("[data-test='profile-image']");
+      expect(profileImage.exists()).toBe(false);
+
+      let loginBtn = wrapper.find("[data-test='action-button'");
+      await loginBtn.trigger("click");
+
+      profileImage = wrapper.find("[data-test='profile-image']");
+      expect(profileImage.exists()).toBe(true);
+
+      loginBtn = wrapper.find("[data-test='action-button'");
+      expect(loginBtn.exists()).toBe(false);
+    });
+  });
 });
