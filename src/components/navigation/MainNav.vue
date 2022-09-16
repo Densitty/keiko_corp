@@ -36,6 +36,8 @@
           <action-button
             v-if="!isLoggedIn"
             data-test="action-button"
+            :title="title"
+            type="primary"
             @click="loginUser"
           />
           <profile-image v-else data-test="profile-image" @click="logoutUser" />
@@ -71,6 +73,7 @@ export default {
         { id: 6, name: "Jobs" },
       ],
       isLoggedIn: false,
+      title: "Sign in",
     };
   },
   methods: {
