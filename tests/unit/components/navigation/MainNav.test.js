@@ -1,9 +1,9 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import MainNav from "@/components/navigation/MainNav.vue";
 
 describe("MainNav", () => {
   it("shows a company logo", () => {
-    const wrapper = mount(MainNav);
+    const wrapper = shallowMount(MainNav);
 
     expect(wrapper.get("img").attributes().src).toBe("keiko_corp.svg");
     expect(wrapper.get("img").attributes().alt).toMatch("Keiko Corp");
@@ -13,13 +13,13 @@ describe("MainNav", () => {
   });
 
   it("expects logo to link to a homepage", () => {
-    const wrapper = mount(MainNav);
+    const wrapper = shallowMount(MainNav);
 
     expect(wrapper.get("a").attributes().href).toBe("/");
   });
 
   it("display menu navigation items", () => {
-    const wrapper = mount(MainNav);
+    const wrapper = shallowMount(MainNav);
 
     const navItems = wrapper.findAll("[data-test='main-nav-links']");
 
@@ -37,7 +37,7 @@ describe("MainNav", () => {
 
   describe("when a user is not authenticated", () => {
     it("shows a sign-in button", () => {
-      const wrapper = mount(MainNav);
+      const wrapper = shallowMount(MainNav);
 
       const loginBtn = wrapper.find("[data-test='action-button'");
 
@@ -47,7 +47,7 @@ describe("MainNav", () => {
 
   describe("when a user is authenticated", () => {
     it("shows a profile image", async () => {
-      const wrapper = mount(MainNav);
+      const wrapper = shallowMount(MainNav);
       let profileImage = wrapper.find("[data-test='profile-image']");
       expect(profileImage.exists()).toBe(false);
 
@@ -60,5 +60,19 @@ describe("MainNav", () => {
       loginBtn = wrapper.find("[data-test='action-button'");
       expect(loginBtn.exists()).toBe(false);
     });
+  });
+
+  it("displays subnav with additional information", async () => {
+    const wrapper = shallowMount(MainNav);
+    let subnav = wrapper.find("[data-test='subnav']");
+
+    expect(subnav.exists()).toBe(false);
+
+    let loginBtn = wrapper.find("[data-test='action-button'");
+    await loginBtn.trigger("click");
+    loginBtn = wrapper.find("[data-test='action-button'");
+
+    subnav = wrapper.find("[data-test='subnav']");
+    expect(subnav.exists()).toBe(true);
   });
 });
