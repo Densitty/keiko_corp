@@ -43,6 +43,7 @@
           <profile-image v-else data-test="profile-image" @click="logoutUser" />
         </div>
       </div>
+      <subnav v-if="isLoggedIn" data-test="subnav"></subnav>
     </div>
   </header>
 </template>
@@ -50,12 +51,14 @@
 <script>
 import ActionButton from "@/components/global/button/Button.vue";
 import ProfileImage from "@/components/global/profile/ProfileImage.vue";
+import Subnav from "@/components/navigation/Subnav.vue";
 
 export default {
   name: "MainNav",
   components: {
     ActionButton,
     ProfileImage,
+    Subnav,
   },
   data() {
     return {
