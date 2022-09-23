@@ -1,10 +1,11 @@
 <template>
-  <section>
+  <section class="mb-16">
     <h1
       class="font-bold tracking-tighter text-8xl mb-14"
       data-test="action-word"
     >
-      <span :class="headlineClasses" class="block">{{ actionWord }}</span>
+      <span :class="headlineClasses">{{ actionWord }}</span>
+      <br />
       for everyone
     </h1>
     <h2 class="text-3xl font-light">Find your next job at Keiko Corp</h2>

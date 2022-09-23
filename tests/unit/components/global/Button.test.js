@@ -1,4 +1,4 @@
-import Button from "@/components/global/button/Button.vue";
+import Button from "@/components/global/form/Button.vue";
 import { mount } from "@vue/test-utils";
 
 describe("Button", () => {
@@ -15,8 +15,10 @@ describe("Button", () => {
 
   it("applies either primary or secondary class style", () => {
     const wrapper = mount(Button, {
-      type: "primary",
-      title: "This is a button",
+      props: {
+        type: "primary",
+        title: "This is a button",
+      },
     });
 
     const btn = wrapper.find("button");
