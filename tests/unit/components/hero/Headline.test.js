@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
-import Headline from "@/components/navigation/hero_internals/Headline.vue";
+import Headline from "@/components/hero/Headline.vue";
 
 describe("Headline", () => {
   beforeEach(() => {

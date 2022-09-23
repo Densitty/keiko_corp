@@ -39,11 +39,11 @@ export default {
 
 <style scoped>
 .btn {
-  @apply px-5 py-3 font-medium rounded;
+  @apply px-5 py-3 font-medium;
 }
 
 .primary {
-  @apply bg-blue-1 text-white hover:shadow-blue;
+  @apply bg-blue-1 rounded text-white hover:shadow-blue;
 }
 
 .secondary {
