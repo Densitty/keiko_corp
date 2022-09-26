@@ -5,8 +5,8 @@
         class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-gray-1"
       >
         <div class="w-40 h-full">
-          <a
-            :href="company.url"
+          <router-link
+            :to="{ name: 'Home' }"
             class="flex items-center justify-center h-full"
           >
             <img
@@ -14,7 +14,7 @@
               :src="company.img"
               :alt="company.name"
             />
-          </a>
+          </router-link>
         </div>
 
         <nav class="h-full ml-auto">
@@ -25,9 +25,9 @@
               class="h-full ml-4 first:ml-0"
               data-test="main-nav-links"
             >
-              <a href="#" class="flex items-center py-5">
+              <router-link :to="link.url" class="flex items-center py-5">
                 {{ link.name }}
-              </a>
+              </router-link>
             </li>
           </ul>
         </nav>
@@ -65,15 +65,14 @@ export default {
       company: {
         name: "Keiko Corp",
         img: "keiko_corp.svg",
-        url: "/",
       },
       links: [
-        { id: 1, name: "Teams" },
-        { id: 2, name: "Locations" },
-        { id: 3, name: `Life at Keiko Corp` },
-        { id: 4, name: "Hiring Process" },
-        { id: 5, name: "Internships" },
-        { id: 6, name: "Jobs" },
+        { id: 1, name: "Teams", url: "/" },
+        { id: 2, name: "Locations", url: "/" },
+        { id: 3, name: `Life at Keiko Corp`, url: "/" },
+        { id: 4, name: "Hiring Process", url: "/" },
+        { id: 5, name: "Internships", url: "/" },
+        { id: 6, name: "Jobs", url: "/jobs/results" },
       ],
       isLoggedIn: false,
       title: "Sign in",
