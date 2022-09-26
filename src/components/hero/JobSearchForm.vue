@@ -1,6 +1,8 @@
 <template>
   <form
     class="flex items-center w-full h-12 mt-14 border border-solid border-gray-3 rounded-3xl"
+    data-test="form-submit"
+    @submit.prevent="searchJobs"
   >
     <font-awesome-icon :icon="['fas', 'search']" class="ml-4 mr-3" />
 
@@ -14,7 +16,11 @@
           :form-value="job_type"
           @form-input="getJobType"
         ></text-input> -->
-        <text-input v-model="job_type" placeholder="job type"></text-input>
+        <text-input
+          v-model="job_type"
+          placeholder="job type"
+          data-test="job-type-input"
+        ></text-input>
       </div>
       <span
         class="flex items-center h-full px-3 border-x border-gray-3 bg-gray-2"
@@ -32,6 +38,7 @@
           v-model="location"
           type="text"
           placeholder="city"
+          data-test="location-input"
         ></text-input>
       </div>
     </div>
@@ -66,6 +73,13 @@ export default {
     },
     getLocation(value) {
       this.location = value;
+    },
+    searchJobs() {
+      const query = {
+        job_type: this.job_type,
+        location: this.location,
+      };
+      this.$router.push({ name: "JobResults", query });
     },
   },
 };
