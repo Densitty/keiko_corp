@@ -1,17 +1,19 @@
 <template>
-  <h1>This is an about page</h1>
-  <button @click="() => $router.push({ name: 'Home' })">Go Home</button>
-  <h2>{{ myRoute }}</h2>
+  <div class="flex flex-row flex-nowrap w-full">
+    <job-filters-sidebar></job-filters-sidebar>
+    <job-listings></job-listings>
+  </div>
 </template>
 
 <script>
+import JobFiltersSidebar from "@/components/job_results/jobs_filter_sidebar/JobFiltersSidebar.vue";
+import JobListings from "@/components/job_results/JobListings.vue";
+
 export default {
   name: "JobResultsView",
-  computed: {
-    myRoute() {
-      console.log(this.$router);
-      return "Hello";
-    },
+  components: {
+    JobFiltersSidebar,
+    JobListings,
   },
 };
 </script>
