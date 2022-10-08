@@ -1,10 +1,17 @@
 <template>
-  <h1>Keiko Corp</h1>
+  <nav>
+    <main-nav></main-nav>
+  </nav>
+  <router-view />
 </template>
 
 <script>
+import MainNav from "@/components/navigation/MainNav.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    MainNav,
+  },
 };
 </script>
